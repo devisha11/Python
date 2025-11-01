@@ -1,0 +1,48 @@
+/*  Given the head of a linked list, remove the nth node from the end of the list and return its head. 
+   
+  
+ Example 1: 
+ Input: head = [1,2,3,4,5], n = 2 
+ Output: [1,2,3,5] 
+  
+ Example 2: 
+ Input: head = [1], n = 1 
+ Output: [] 
+  
+ Example 3: 
+ Input: head = [1,2], n = 1 
+ Output: [1] 
+   
+  
+ Constraints: 
+ The number of nodes in the list is sz. 
+ 1 <= sz <= 30 
+ 0 <= Node.val <= 100 
+ 1 <= n <= sz */ 
+  
+  
+ Code: 
+ class Solution: 
+     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]: 
+         k=0 
+         head1=head 
+         while head1: 
+             k+=1 
+             #print(head1.val) 
+             head1=head1.next 
+          
+         dummy = ListNode() 
+         res = dummy 
+  
+         nth=k-n 
+         k=0 
+         while head: 
+             if k==nth: 
+                 head=head.next 
+                 k+=1 
+                 continue 
+             dummy.next=ListNode(head.val) 
+             dummy=dummy.next 
+             head=head.next 
+             k+=1 
+         return res.next
